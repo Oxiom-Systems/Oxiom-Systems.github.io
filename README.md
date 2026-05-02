@@ -13,9 +13,20 @@ python3 -m http.server 4173
 
 ## Hosting notes
 
-The site has no build step. The root folder can be published with GitHub Pages,
-Google Firebase Hosting, Google Cloud Storage static hosting, or any static web
-host.
+The private source repo is intended to live at
+`Oxiom-Systems/OxiomSystems-website`.
+
+The public GitHub Pages release repo is
+`Oxiom-Systems/Oxiom-Systems.github.io`.
+
+The site has no build step. To publish the current static files to the public
+Pages repo, run:
+
+```sh
+./scripts/publish-pages.sh
+```
+
+This copies only the static release files into the public Pages repo.
 
 Current content includes:
 
