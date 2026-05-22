@@ -1,8 +1,10 @@
-# Oxiom Systems TraceWeaver Site
+# Oxiom Systems Website
 
-Static website scaffold for hosting TraceWeaver as an Oxiom Systems product.
+Static website for positioning Oxiom Systems as the main professional front
+door for systems-engineering, TraceWeaver, workshops, agentic harnesses, and
+solution-architecture work.
 
-## Local preview
+## Local Preview
 
 Open `index.html` directly in a browser, or serve the folder with any static
 server:
@@ -11,7 +13,7 @@ server:
 python3 -m http.server 4173
 ```
 
-## Hosting notes
+## Hosting Notes
 
 The private source repo is intended to live at
 `Oxiom-Systems/OxiomSystems-website`.
@@ -28,10 +30,33 @@ Pages repo, run:
 
 This copies only the static release files into the public Pages repo.
 
-Current content includes:
+## Domain Setup
 
-- TraceWeaver product introduction.
-- Arcweaver benchmark framing.
-- Interactive Arcweaver-Vibe vs Arcweaver-TraceWeaver comparison lab with a
-  woven power/current visual direction.
-- Placeholder section for the future TraceWeaver paper.
+The repository includes a `CNAME` file for `oxiomsystems.com`.
+
+For GitHub Pages, configure the public Pages repository with `oxiomsystems.com`
+as the custom domain, then point DNS at GitHub Pages:
+
+- Apex/root `oxiomsystems.com`: four `A` records for GitHub Pages.
+- `www.oxiomsystems.com`: one `CNAME` record pointing to
+  `Oxiom-Systems.github.io`.
+
+Required apex `A` values:
+
+```text
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
+
+## Current Content
+
+- Oxiom Systems positioning as the main professional contact point.
+- TraceWeaver as the flagship open-source framework and future enterprise/API
+  product.
+- Workshop positioning for collaborative coding-agent workflows.
+- Agentic harnesses for practical AI orchestration.
+- Solution architecture for real-world AI implementation.

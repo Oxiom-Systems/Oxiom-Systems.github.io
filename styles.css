@@ -259,7 +259,7 @@ a.button {
   max-width: 960px;
   color: var(--ink-strong);
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: 6.2rem;
+  font-size: clamp(4.25rem, 5.8vw, 5.7rem);
   line-height: 0.9;
   font-weight: 700;
   letter-spacing: 0;
@@ -378,7 +378,7 @@ a.button {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 2;
+  z-index: 1;
   display: grid;
   width: 174px;
   height: 174px;
@@ -391,6 +391,7 @@ a.button {
   color: #101826;
   text-align: center;
   transform: translate(-50%, -50%);
+  opacity: 0.42;
   box-shadow: 0 0 70px rgba(241, 184, 75, 0.32), 0 0 120px rgba(23, 185, 202, 0.23);
   animation: coreGlow 3.2s ease-in-out infinite alternate;
 }
@@ -415,7 +416,7 @@ a.button {
   width: 132%;
   height: 9px;
   border-radius: 999px;
-  opacity: 0.88;
+  opacity: 0.68;
   filter: drop-shadow(0 0 20px currentColor);
   transform-origin: center;
   background-size: 220% 100%;
@@ -475,7 +476,7 @@ a.button {
   align-content: center;
   min-height: 122px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.64);
+  background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(17, 45, 51, 0.12);
   border-radius: 14px;
   backdrop-filter: blur(10px);
@@ -543,7 +544,7 @@ section {
 .section-heading h2,
 .paper h2,
 .start h2 {
-  font-size: 4.1rem;
+  font-size: clamp(3rem, 4.6vw, 4rem);
 }
 
 .framework-grid {
@@ -1091,6 +1092,33 @@ pre {
 .start p,
 .start .eyebrow {
   color: #527077;
+}
+
+.contact-list {
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  color: #31565e;
+}
+
+.contact-list li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.contact-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--tide));
+  box-shadow: 0 0 16px rgba(23, 185, 202, 0.28);
 }
 
 .start .button.primary {

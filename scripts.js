@@ -1,54 +1,48 @@
 const demos = {
   vibe: {
-    kicker: "Unbound weave",
-    title: "Arcweaver-Vibe",
+    kicker: "Fast agent pass",
+    title: "Prompt-only build",
     summary:
-      "A direct agent build from the product brief. The result can appear quickly, but hidden assumptions may become part of the game without a visible authority chain.",
-    metrics: ["Prompt", "Loose thread", "Exploration"],
-    prompt: `Build a browser-based game called Arcweaver.
-Use Flame, Tide, Gale, Stone, and Aether.
-Create five compact levels with puzzles, combat, XP, restart, and win state.
-Prioritize a working playable MVP over perfect art.`,
-    code: `function cast(element, target) {
-  if (element === "Flame") target.burn();
-  if (element === "Tide") target.extinguish();
-  if (element === "Gale") target.push();
-}
+      "A direct coding-agent build can move quickly, but assumptions, acceptance decisions, and unsupported release claims become difficult to audit.",
+    metrics: ["Prompt", "Manual", "Exploration"],
+    prompt: `Build the requested feature with tests.
+Use your judgement where the brief is unclear.
+Ship the smallest working version.`,
+    code: `const result = await agent.implement(featureBrief);
 
-// Fast path: weave the visible game loop first,
-// then inspect behavior manually.`,
-    hud: ["Level 1", "Flame", "Unbound"],
-    status: "Vibe weave",
+// Fast path: inspect the diff and run tests,
+// then infer whether the feature is acceptable.`,
+    hud: ["Brief", "Agent", "Assumptions hidden"],
+    status: "Unbound work",
     tiles: ["player", "path", "block", "path", "path", "monster", "path", "goal"]
   },
   trace: {
-    kicker: "Bound weave",
-    title: "Arcweaver-TraceWeaver",
+    kicker: "TraceWeaver pass",
+    title: "Controlled agent work",
     summary:
-      "The same game brief, routed through intent capture, approved requirements, task capsules, trace records, and validation evidence.",
-    metrics: ["Intent Contract", "Bound trace", "Auditable MVP"],
+      "The same work moves through intent capture, approved authority, bounded task capsules, traceability checks, and verification or validation evidence.",
+    metrics: ["Intent Contract", "Bound trace", "Defensible delivery"],
     prompt: `Stakeholder intent:
-Build Arcweaver as a five-level browser MVP that demonstrates elemental gameplay.
+Deliver the feature without losing the reason it exists.
 
-Approved requirements:
-REQ-ARC-001 Movement, combat, XP, restart, and win state.
-REQ-ARC-002 Exactly five elements: Flame, Tide, Gale, Stone, Aether.
-REQ-ARC-003 Each level teaches a distinct mechanic.
+Approved authority:
+REQ-001 The behavior must map to the accepted need.
+REQ-002 Implementation claims require verification evidence.
+REQ-003 Unclear decisions must be held or returned to a human.
 
 Validation question:
-Can a reviewer trace every major game behavior back to the brief?`,
+Can a reviewer trace the delivered behavior back to the original need?`,
     code: `const traceRecord = {
-  behavior: "Flame burns vines and damages monsters",
-  authorizedBy: ["REQ-ARC-002", "REQ-ARC-L1"],
-  verification: "playtest-level-1-flame-obstacle",
-  validation: "Player learns Flame can damage and burn"
+  behavior: "Feature path added by the agent",
+  authorizedBy: ["REQ-001", "REQ-002"],
+  verification: "focused-test-output",
+  validation: "stakeholder-need-still-satisfied",
+  heldClaims: ["production readiness"]
 };
 
-function castFlame(target) {
-  assertAuthority(traceRecord);
-  target.apply(["burning", "damage"]);
-}`,
-    hud: ["Level 1", "Trace: REQ-ARC-002", "Evidence required"],
+assertAuthority(traceRecord);
+publishOnlyAfterReview(traceRecord);`,
+    hud: ["Intent", "Trace: REQ-001", "Evidence required"],
     status: "Bound trace",
     tiles: ["player", "path", "reveal", "path", "block", "monster", "path", "goal"]
   }
