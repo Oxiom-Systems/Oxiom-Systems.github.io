@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Oxiom Systems">
+  <defs>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff7ce"/>
+      <stop offset="24%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="markA" x1="9" y1="12" x2="55" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff7a4f"/>
+      <stop offset="0.28" stop-color="#f1b84b"/>
+      <stop offset="0.52" stop-color="#9adf8f"/>
+      <stop offset="0.74" stop-color="#17b9ca"/>
+      <stop offset="1" stop-color="#a891ff"/>
+    </linearGradient>
+    <linearGradient id="markB" x1="55" y1="8" x2="10" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#17b9ca"/>
+      <stop offset="0.42" stop-color="#a891ff"/>
+      <stop offset="0.7" stop-color="#ff7a4f"/>
+      <stop offset="1" stop-color="#f1b84b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#2b727c" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="url(#markA)" filter="url(#softShadow)"/>
+  <path d="M11 34c10-21 30-27 43-16C44 18 30 29 24 53 19 49 14 43 11 34Z" fill="url(#markB)" opacity="0.82"/>
+  <circle cx="32" cy="32" r="29" fill="url(#core)" opacity="0.9"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="0" fill="#081a20">OX</text>
+</svg>
