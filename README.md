@@ -39,7 +39,7 @@ as the custom domain, then point DNS at GitHub Pages:
 
 - Apex/root `oxiomsystems.com`: four `A` records for GitHub Pages.
 - `www.oxiomsystems.com`: one `CNAME` record pointing to
-  `Oxiom-Systems.github.io`.
+  `oxiom-systems.github.io`.
 
 Required apex `A` values:
 
