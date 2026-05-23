@@ -62,8 +62,8 @@ After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
 - Workshop positioning for collaborative coding-agent workflows.
 - Agentic harnesses for practical AI orchestration.
 - Solution architecture for real-world AI implementation.
-- Contact form forwarding via FormSubmit to `hannes@cryptolabs.co.za`, with
-  provider reCAPTCHA left enabled and a honeypot field included.
+- Contact form forwarding via FormSubmit to the activated destination email,
+  with provider reCAPTCHA left enabled and a honeypot field included.
 
 The first FormSubmit message may require confirming the destination email
 address before forwarding starts.
