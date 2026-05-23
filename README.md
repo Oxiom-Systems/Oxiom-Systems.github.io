@@ -57,6 +57,13 @@ After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
 - Oxiom Systems positioning as the main professional contact point.
 - TraceWeaver as the flagship open-source framework and future enterprise/API
   product.
+- A first-time TraceWeaver guide section that links public visitors to the
+  GitHub quick start while keeping adoption/workshop contact separate.
 - Workshop positioning for collaborative coding-agent workflows.
 - Agentic harnesses for practical AI orchestration.
 - Solution architecture for real-world AI implementation.
+- Contact form forwarding via FormSubmit to `hannes@cryptolabs.co.za`, with
+  provider reCAPTCHA left enabled and a honeypot field included.
+
+The first FormSubmit message may require confirming the destination email
+address before forwarding starts.

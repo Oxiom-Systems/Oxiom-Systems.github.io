@@ -279,6 +279,52 @@ Ship the smallest working version.</code></pre>
         </div>
       </section>
 
+      <section class="guide" aria-labelledby="guide-title">
+        <div class="section-heading">
+          <p class="eyebrow">First-time guide</p>
+          <h2 id="guide-title">TraceWeaver: from prompt to proof.</h2>
+          <p>
+            TraceWeaver gives coding-agent work five controls a reviewer can
+            follow: intent, authority, trace, verification, and validation.
+            When one is missing, the claim stays held instead of becoming a
+            hidden implementation assumption.
+          </p>
+        </div>
+        <div class="guide-grid" aria-label="TraceWeaver first-time guide">
+          <article>
+            <span class="article-number">1</span>
+            <h3>Install the plugin</h3>
+            <p>
+              Start from the open-source quick start for Codex or Claude Code,
+              then use the TraceWeaver-owned <code>tw-*</code> workflow instead
+              of raw agent handoffs.
+            </p>
+          </article>
+          <article>
+            <span class="article-number">2</span>
+            <h3>Bootstrap or audit</h3>
+            <p>
+              New repositories create authority files first. Existing
+              repositories can run an audit to find candidate dark code, missing
+              verification, duplicate behavior, and lost intent.
+            </p>
+          </article>
+          <article>
+            <span class="article-number">3</span>
+            <h3>Work with evidence</h3>
+            <p>
+              Plans, implementation, tests, review, and release language stay
+              tied to approved authority. Unsupported runtime or publication
+              claims remain visible and held.
+            </p>
+          </article>
+        </div>
+        <div class="guide-actions" aria-label="TraceWeaver guide actions">
+          <a class="button primary" href="https://github.com/Oxiom-Systems/traceweaver#quick-start">Read the quick start</a>
+          <a class="button secondary" href="#contact">Plan adoption help</a>
+        </div>
+      </section>
+
       <section class="paper" id="workshops" aria-labelledby="workshops-title">
         <div class="paper-copy">
           <p class="eyebrow">Workshops</p>
@@ -335,8 +381,8 @@ Ship the smallest working version.</code></pre>
         </div>
       </section>
 
-      <section class="start" id="contact" aria-labelledby="contact-title">
-        <div>
+      <section class="start contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-copy">
           <p class="eyebrow">Work with Oxiom Systems</p>
           <h2 id="contact-title">Start with TraceWeaver, a workshop, or a real agentic workflow problem.</h2>
           <p>
@@ -351,7 +397,41 @@ Ship the smallest working version.</code></pre>
             <li>Solution architecture for real-world AI implementation</li>
           </ul>
         </div>
-        <a class="button primary" href="https://github.com/Oxiom-Systems/traceweaver">View TraceWeaver</a>
+        <form class="contact-form" action="https://formsubmit.co/hannes@cryptolabs.co.za" method="POST">
+          <input type="hidden" name="_subject" value="New Oxiom Systems website enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://oxiomsystems.com/thanks.html">
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+
+          <label>
+            <span>What do you need help with?</span>
+            <select name="interest" required>
+              <option value="">Select one</option>
+              <option value="TraceWeaver adoption">TraceWeaver adoption</option>
+              <option value="Workshop">Workshop</option>
+              <option value="Agentic harness">Agentic harness</option>
+              <option value="Solution architecture">Solution architecture</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+
+          <button class="button primary" type="submit">Send enquiry</button>
+        </form>
       </section>
     </main>
 
