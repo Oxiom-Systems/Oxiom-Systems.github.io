@@ -30,6 +30,7 @@
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#practice">Practice</a>
+        <a href="#consultant">Consultant</a>
         <a href="#traceweaver">TraceWeaver</a>
         <a href="#workshops">Workshops</a>
         <a href="#harnesses">Harnesses</a>
@@ -129,6 +130,46 @@
               approval gates, and human review into working business systems.
             </p>
           </article>
+          </div>
+      </section>
+
+      <section class="consultant-section" id="consultant" aria-labelledby="consultant-title">
+        <div class="section-heading">
+          <p class="eyebrow">Expert Agent Integration</p>
+          <h2 id="consultant-title">Collaborate with an active AI Systems Engineering Consultant.</h2>
+          <p>
+            Oxiom Systems includes a specialized virtual consultant agent that runs directly in your environment. Built on the Google Antigravity SDK, the agent co-pilots requirements verification, monitors trace integrity, and guards against unauthorized changes.
+          </p>
+        </div>
+        <div class="consultant-grid">
+          <div class="consultant-details">
+            <h3>Autonomous Oversight</h3>
+            <p>
+              The consultant works alongside developers and other coding agents. It enforces the Intent Contract by auditing modifications, checking test coverage, and holding unverified behavior before PR approvals.
+            </p>
+            <ul class="consultant-capabilities">
+              <li><strong>Continuous Audits:</strong> Runs <code>tw-audit</code> to discover dark code, dead tests, and orphaned requirements.</li>
+              <li><strong>Gate Sentinel:</strong> Blocks build pipelines via <code>tw-authority-gate</code> when code lacks intent mapping.</li>
+              <li><strong>Actionable Feedback:</strong> Reports gaps directly into the codebase and prompts developers for clarification.</li>
+            </ul>
+          </div>
+          <div class="terminal-shell" aria-label="Agent Consultant Terminal Output">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Oxiom Consultant Session</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="cmd-prompt">$</span> tw-audit "check codebase traceability"</div>
+              <div class="terminal-line log-info">[INFO] Scanning workspace directory for TraceWeaver gates...</div>
+              <div class="terminal-line log-info">[INFO] Comparing active hashes with .traceweaver/intent-contract.yml...</div>
+              <div class="terminal-line log-warning">[WARN] Finding TWCORE-041: 18 lines of untracked code in src/billing.js</div>
+              <div class="terminal-line log-warning">[WARN] Finding TWCORE-042: No test evidence linking to REQ-TW-021</div>
+              <div class="terminal-line log-danger">[HELD] Claim 'Production Readiness' is held: missing verification trail</div>
+              <div class="terminal-line log-success">[DONE] Trace audit complete. 2 warnings, 1 held claim.</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -174,6 +215,9 @@
             </button>
             <button class="mode-button" type="button" role="tab" aria-selected="false" data-demo="trace">
               TraceWeaver
+            </button>
+            <button class="mode-button" type="button" role="tab" aria-selected="false" data-demo="antigravity">
+              Antigravity SDK
             </button>
           </div>
 
@@ -248,6 +292,71 @@ Ship the smallest working version.</code></pre>
             </div>
           </div>
         </div>
+
+        <!-- Onboarding guide nested inside TraceWeaver section -->
+        <div class="guide-wrapper" id="onboarding">
+          <div class="section-heading">
+            <p class="eyebrow">First-time guide</p>
+            <div class="guide-header-row">
+              <h2 id="guide-title">Get started in minutes.</h2>
+              <a class="github-repo-link" href="https://github.com/Oxiom-Systems/traceweaver" target="_blank" rel="noopener">
+                <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <span>github.com/Oxiom-Systems/traceweaver</span>
+              </a>
+            </div>
+            <p>
+              Choose your developer environment to configure TraceWeaver. We generate the install commands and show you how your repository layout changes.
+            </p>
+          </div>
+
+          <div class="onboarding-container">
+            <div class="onboarding-controls" role="tablist" aria-label="Select environment">
+              <button class="onboarding-tab is-active" type="button" role="tab" aria-selected="true" data-onboard="codex">
+                Codex Plugin
+              </button>
+              <button class="onboarding-tab" type="button" role="tab" aria-selected="false" data-onboard="claude">
+                Claude Code
+              </button>
+              <button class="onboarding-tab" type="button" role="tab" aria-selected="false" data-onboard="cursor">
+                Cursor Plugin
+              </button>
+              <button class="onboarding-tab" type="button" role="tab" aria-selected="false" data-onboard="antigravity">
+                Antigravity SDK
+              </button>
+            </div>
+
+            <div class="onboarding-workspace">
+              <div class="pane console-pane">
+                <div class="pane-header">
+                  <span>Terminal Setup</span>
+                  <button class="icon-button" type="button" data-copy="onboard-cmd" aria-label="Copy installation command">Copy</button>
+                </div>
+                <pre><code id="onboard-code"># Install the marketplace and plugin
+codex plugin marketplace add Oxiom-Systems/traceweaver
+codex plugin install traceweaver-core@traceweaver
+
+# Bootstrap authority for your project
+tw-auto "bootstrap TraceWeaver authority for this project"</code></pre>
+              </div>
+
+              <div class="pane tree-pane">
+                <div class="pane-header">
+                  <span>Repository Layout</span>
+                </div>
+                <pre><code id="tree-code">my-project/
+├── requirements.md               [NEW]  <- Controlled requirements baseline
+├── traceability-matrix.md        [NEW]  <- Maps code and verification paths
+└── .traceweaver/
+    └── intent-contract.yml       [NEW]  <- Approved baseline hash and active gates</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-actions" aria-label="TraceWeaver guide actions">
+            <a class="button primary" href="https://github.com/Oxiom-Systems/traceweaver#quick-start" id="onboard-docs-btn">Read the Codex guide</a>
+            <a class="button secondary" href="#contact">Plan adoption help</a>
+          </div>
+        </div>
       </section>
 
       <section class="comparison" aria-labelledby="comparison-title">
@@ -279,51 +388,6 @@ Ship the smallest working version.</code></pre>
         </div>
       </section>
 
-      <section class="guide" aria-labelledby="guide-title">
-        <div class="section-heading">
-          <p class="eyebrow">First-time guide</p>
-          <h2 id="guide-title">TraceWeaver: from prompt to proof.</h2>
-          <p>
-            TraceWeaver gives coding-agent work five controls a reviewer can
-            follow: intent, authority, trace, verification, and validation.
-            When one is missing, the claim stays held instead of becoming a
-            hidden implementation assumption.
-          </p>
-        </div>
-        <div class="guide-grid" aria-label="TraceWeaver first-time guide">
-          <article>
-            <span class="article-number">1</span>
-            <h3>Install the plugin</h3>
-            <p>
-              Start from the open-source quick start for Codex or Claude Code,
-              then use the TraceWeaver-owned <code>tw-*</code> workflow instead
-              of raw agent handoffs.
-            </p>
-          </article>
-          <article>
-            <span class="article-number">2</span>
-            <h3>Bootstrap or audit</h3>
-            <p>
-              New repositories create authority files first. Existing
-              repositories can run an audit to find candidate dark code, missing
-              verification, duplicate behavior, and lost intent.
-            </p>
-          </article>
-          <article>
-            <span class="article-number">3</span>
-            <h3>Work with evidence</h3>
-            <p>
-              Plans, implementation, tests, review, and release language stay
-              tied to approved authority. Unsupported runtime or publication
-              claims remain visible and held.
-            </p>
-          </article>
-        </div>
-        <div class="guide-actions" aria-label="TraceWeaver guide actions">
-          <a class="button primary" href="https://github.com/Oxiom-Systems/traceweaver#quick-start">Read the quick start</a>
-          <a class="button secondary" href="#contact">Plan adoption help</a>
-        </div>
-      </section>
 
       <section class="paper" id="workshops" aria-labelledby="workshops-title">
         <div class="paper-copy">

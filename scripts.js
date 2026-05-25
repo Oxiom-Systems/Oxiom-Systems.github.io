@@ -45,6 +45,32 @@ publishOnlyAfterReview(traceRecord);`,
     hud: ["Intent", "Trace: REQ-001", "Evidence required"],
     status: "Bound trace",
     tiles: ["player", "path", "reveal", "path", "block", "monster", "path", "goal"]
+  },
+  antigravity: {
+    kicker: "Antigravity SDK pass",
+    title: "Multi-Agent Verification",
+    summary:
+      "Build robust, autonomous agent loops using the Google Antigravity Python SDK. Multi-agent delegation automatically checks requirements, enforces safety predicates, and writes validation logs.",
+    metrics: ["Antigravity SDK", "Safety Predicates", "Multi-Agent Verifiable"],
+    prompt: `from google.antigravity import LocalAgentConfig, Agent
+
+config = LocalAgentConfig(
+    model="gemini-2.5-pro",
+    system_instruction="Enforce TraceWeaver systems engineering rules."
+)
+agent = Agent(config)
+# Run workflow under intent and requirements audit`,
+    code: `const traceSession = await antigravity.run({
+  intent: "Integrate billing processor",
+  requirements: "requirements.md",
+  safety: "safety_policies.md",
+  gates: ["tw-authority-gate", "tw-traceability-check"]
+});
+
+// Agent validates requirements and reports status`,
+    hud: ["Antigravity", "Multi-Agent", "Audited validation"],
+    status: "Audited workflow",
+    tiles: ["player", "reveal", "path", "goal", "reveal", "path", "path", "goal"]
   }
 };
 
@@ -93,17 +119,116 @@ function applyDemo(name) {
   });
 }
 
+const onboards = {
+  codex: {
+    code: `# Install the marketplace and plugin
+codex plugin marketplace add Oxiom-Systems/traceweaver
+codex plugin install traceweaver-core@traceweaver
+
+# Bootstrap authority for your project
+tw-auto "bootstrap TraceWeaver authority for this project"`,
+    tree: `my-project/
+├── requirements.md               [NEW]  <- Controlled requirements baseline
+├── traceability-matrix.md        [NEW]  <- Maps code and verification paths
+└── .traceweaver/
+    └── intent-contract.yml       [NEW]  <- Approved baseline hash and active gates`,
+    docsUrl: "https://github.com/Oxiom-Systems/traceweaver#codex",
+    docsText: "Read the Codex guide"
+  },
+  claude: {
+    code: `# Add the marketplace and install the plugin
+claude plugin marketplace add Oxiom-Systems/traceweaver
+claude plugin install traceweaver-core@traceweaver
+
+# Reload active plugins
+/reload-plugins
+
+# Run trace check on a specific goal
+tw-auto "implement user auth with verification"`,
+    tree: `my-project/
+├── requirements.md               [NEW]  <- Requirements baseline
+├── traceability-matrix.md        [NEW]  <- Matrix linking needs and code
+└── .traceweaver/
+    └── intent-contract.yml       [NEW]  <- Scope restrictions & baseline hash`,
+    docsUrl: "https://github.com/Oxiom-Systems/traceweaver#claude",
+    docsText: "Read the Claude Code guide"
+  },
+  cursor: {
+    code: `# Copy the Cursor rules peer manifest locally
+mkdir -p .cursor-rules
+cp plugins/traceweaver-core/.cursor-plugin/plugin.json .cursor-rules/
+
+# Bootstrap TraceWeaver rules for Cursor
+tw-auto "bootstrap TraceWeaver rules"`,
+    tree: `my-project/
+├── requirements.md               [NEW]  <- Controlled requirements baseline
+├── traceability-matrix.md        [NEW]  <- Maps code and verification paths
+└── .cursor-rules/
+    └── plugin.json               [NEW]  <- Cursor rules peer manifest`,
+    docsUrl: "https://github.com/Oxiom-Systems/traceweaver#cursor",
+    docsText: "Read the Cursor guide"
+  },
+  antigravity: {
+    code: `# Install the Python SDK
+pip install google-antigravity
+
+# Verify dependencies and active GEMINI_API_KEY
+export GEMINI_API_KEY="your-api-key"
+python -c "import google.antigravity; print('Antigravity Ready!')"
+
+# Run trace audit in your workflow
+tw-audit "verify requirements coverage"`,
+    tree: `my-project/
+├── requirements.md               [NEW]  <- Requirements baseline
+├── traceability-matrix.md        [NEW]  <- Traceability matrix
+├── .traceweaver/
+│   └── intent-contract.yml       [NEW]  <- Intent contract details
+└── main.py                       [NEW]  <- Python agent script using Antigravity SDK`,
+    docsUrl: "https://github.com/Oxiom-Systems/traceweaver#antigravity",
+    docsText: "Read the Antigravity guide"
+  }
+};
+
+const onboardTabs = document.querySelectorAll("[data-onboard]");
+
+function applyOnboard(name) {
+  const onboard = onboards[name];
+  setText("onboard-code", onboard.code);
+  setText("tree-code", onboard.tree);
+  
+  const docsBtn = document.getElementById("onboard-docs-btn");
+  if (docsBtn) {
+    docsBtn.href = onboard.docsUrl;
+    docsBtn.textContent = onboard.docsText;
+  }
+
+  onboardTabs.forEach((tab) => {
+    const active = tab.dataset.onboard === name;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+}
+
 document.addEventListener("click", async (event) => {
   const demoButton = event.target.closest("[data-demo]");
   if (demoButton) applyDemo(demoButton.dataset.demo);
 
+  const onboardTab = event.target.closest("[data-onboard]");
+  if (onboardTab) applyOnboard(onboardTab.dataset.onboard);
+
   const copyButton = event.target.closest("[data-copy]");
   if (!copyButton) return;
 
-  const source =
-    copyButton.dataset.copy === "prompt"
-      ? document.getElementById("prompt-code")
-      : document.getElementById("sample-code");
+  let source;
+  if (copyButton.dataset.copy === "prompt") {
+    source = document.getElementById("prompt-code");
+  } else if (copyButton.dataset.copy === "code") {
+    source = document.getElementById("sample-code");
+  } else if (copyButton.dataset.copy === "onboard-cmd") {
+    source = document.getElementById("onboard-code");
+  }
+
+  if (!source) return;
 
   try {
     await navigator.clipboard.writeText(source.textContent);
@@ -117,3 +242,4 @@ document.addEventListener("click", async (event) => {
 });
 
 applyDemo("vibe");
+applyOnboard("codex");

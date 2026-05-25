@@ -1532,3 +1532,252 @@ pre {
     width: 100%;
   }
 }
+
+/* Oxiom Consultant Section */
+.consultant-section {
+  background: radial-gradient(circle at 80% 20%, rgba(23, 185, 202, 0.08), transparent 30rem), #ffffff;
+  color: var(--surface-ink);
+}
+
+.consultant-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.consultant-details h3 {
+  margin: 0 0 14px;
+  color: var(--ink-strong);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 2.8rem;
+  line-height: 1.1;
+}
+
+.consultant-details p {
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.consultant-capabilities {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.consultant-capabilities li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.consultant-capabilities li strong {
+  color: var(--ink-strong);
+}
+
+.consultant-capabilities li::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tide), var(--aether));
+  box-shadow: 0 0 12px rgba(23, 185, 202, 0.4);
+}
+
+/* Terminal Mockup */
+.terminal-shell {
+  display: flex;
+  flex-direction: column;
+  height: 380px;
+  background: #0d1e24;
+  border: 1px solid rgba(23, 185, 202, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(13, 30, 36, 0.25);
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  background: rgba(17, 45, 51, 0.4);
+  border-bottom: 1px solid rgba(23, 185, 202, 0.12);
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27c93f; }
+
+.terminal-title {
+  margin-left: 8px;
+  color: #8faeb8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  color: #d1e2e6;
+  white-space: pre-wrap;
+}
+
+.cmd-prompt {
+  color: #17b9ca;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.log-info { color: #8cb4c0; }
+.log-warning { color: #f1b84b; }
+.log-danger { color: #ff7a4f; }
+.log-success { color: #9adf8f; }
+
+/* Interactive Onboarding Console */
+.onboarding-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 32px 0;
+}
+
+.onboarding-controls {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(17, 45, 51, 0.1);
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.onboarding-tab {
+  min-height: 36px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: "Avenir Next", Avenir, Optima, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.onboarding-tab:hover {
+  color: var(--ink-strong);
+}
+
+.onboarding-tab.is-active {
+  background: linear-gradient(135deg, #ffffff, var(--truth));
+  color: var(--ink-strong);
+  box-shadow: 0 4px 12px rgba(23, 185, 202, 0.1);
+}
+
+.onboarding-workspace {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+
+.onboarding-workspace .pane {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 48px rgba(43, 114, 124, 0.1);
+}
+
+.onboarding-workspace pre {
+  min-height: 280px;
+  max-height: 380px;
+}
+
+@media (max-width: 940px) {
+  .consultant-grid,
+  .onboarding-workspace {
+    grid-template-columns: 1fr;
+  }
+  
+  .terminal-shell {
+    height: 320px;
+  }
+}
+
+/* Guide header row & GitHub link */
+.guide-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.github-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(17, 45, 51, 0.12);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "Avenir Next", Avenir, Optima, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-strong);
+  box-shadow: 0 4px 16px rgba(23, 185, 202, 0.08);
+  transition: all 180ms ease;
+}
+
+.github-repo-link:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(23, 185, 202, 0.15);
+}
+
+.github-icon {
+  color: var(--ink);
+}
+
+/* Guide Wrapper inside Lab section */
+.guide-wrapper {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid rgba(17, 45, 51, 0.1);
+}
+
+@media (max-width: 760px) {
+  .guide-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .github-repo-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
