@@ -1,2 +1,5 @@
 .memsearch/
 .DS_Store
+data/voicebox.db
+deliverables/traceweaver-video/voicebox-clips/*.request.json
+deliverables/traceweaver-video/voicebox-clips-*/*.request.json
