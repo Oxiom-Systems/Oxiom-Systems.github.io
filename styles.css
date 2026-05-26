@@ -327,7 +327,9 @@ a.button {
   position: relative;
   z-index: 1;
   display: grid;
+  grid-template-rows: auto 1fr auto;
   gap: 8px;
+  height: 100%;
   min-width: 0;
 }
 
@@ -346,10 +348,15 @@ a.button {
   line-height: 1;
 }
 
+.trace-steps .hero-video-copy strong {
+  font-family: "Avenir Next", Avenir, Optima, sans-serif;
+  font-size: 0.98rem;
+}
+
 .hero-video-embed {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  min-height: clamp(72px, 7.4vw, 104px);
   border: 1px solid rgba(17, 45, 51, 0.1);
   border-radius: 0;
   background:
@@ -526,7 +533,7 @@ a.button {
 
 .trace-steps .trace-video-step {
   grid-template-columns: 1fr;
-  align-content: start;
+  align-content: stretch;
   padding: 10px;
 }
 
