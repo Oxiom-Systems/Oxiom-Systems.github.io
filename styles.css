@@ -391,8 +391,18 @@ a.button {
 }
 
 .proof-loop .power-loom {
-  max-width: 980px;
+  min-height: clamp(260px, 32vw, 380px);
+  max-width: 100%;
   margin: 0 auto;
+}
+
+.proof-loop .trace-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: center;
+}
+
+.proof-loop .trace-steps li {
+  min-height: 136px;
 }
 
 .power-loom {
