@@ -494,19 +494,59 @@ tw-auto "bootstrap TraceWeaver authority for this project"</code></pre>
       <section class="paper" id="workshops" aria-labelledby="workshops-title">
         <div class="paper-copy">
           <p class="eyebrow">Workshops</p>
-          <h2 id="workshops-title">Learn how to collaborate with agents without losing the engineering thread.</h2>
+          <h2 id="workshops-title">Get notified when TraceWeaver workshops open.</h2>
           <p>
             Oxiom workshops teach practical agent collaboration: how to turn
             messy intent into bounded tasks, route unclear requirements back to
             humans, review agent output, and keep evidence strong enough for
             real delivery decisions.
           </p>
+          <p>
+            Join the notification list for upcoming live sessions, course
+            cohorts, and related TraceWeaver workshop material.
+          </p>
         </div>
-        <div class="paper-card" aria-label="Workshop themes">
-          <span>Workshop themes</span>
-          <strong>From prompt to proof</strong>
-          <small>Intent contracts, requirements authority, coding-agent task capsules, review gates, verification records, and validation evidence.</small>
-        </div>
+        <form class="contact-form workshop-signup-form" action="https://formsubmit.co/15deadc59cd7944b349b39ca77bf9149" method="POST" aria-label="Workshop notification signup">
+          <input type="hidden" name="_subject" value="New Oxiom workshop notification signup">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://oxiomsystems.com/thanks.html">
+          <input type="hidden" name="form_type" value="workshop_notification_signup">
+          <input type="hidden" name="consent_version" value="workshop-notifications-v1-2026-05-27">
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+
+          <label>
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" required>
+          </label>
+
+          <label>
+            <span>Location</span>
+            <input type="text" name="location" autocomplete="address-level2" required>
+          </label>
+
+          <label class="checkbox-label">
+            <input type="checkbox" name="email_consent" value="yes" required>
+            <span>I agree to receive email updates from Oxiom Systems about workshops, courses, and related TraceWeaver material.</span>
+          </label>
+
+          <p class="form-note">
+            Your details are used for workshop notifications and direct follow-up.
+            They should be stored in a private contact list, not committed into
+            the public website repository.
+          </p>
+
+          <button class="button primary" type="submit">Join notification list</button>
+        </form>
       </section>
 
       <section class="framework-band services" id="harnesses" aria-labelledby="harnesses-title">

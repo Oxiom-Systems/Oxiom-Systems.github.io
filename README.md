@@ -59,11 +59,16 @@ After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
   product.
 - A first-time TraceWeaver guide section that links public visitors to the
   GitHub quick start while keeping adoption/workshop contact separate.
+- A workshop notification signup form that collects name, email, phone,
+  location, and explicit email consent through the activated FormSubmit
+  endpoint.
 - Workshop positioning for collaborative coding-agent workflows.
 - Agentic harnesses for practical AI orchestration.
 - Solution architecture for real-world AI implementation.
 - Contact form forwarding via FormSubmit to the activated destination email,
   with provider reCAPTCHA left enabled and a honeypot field included.
+- Workshop signup forwarding via the same FormSubmit endpoint; signup records
+  should be kept in a private contact system rather than committed to GitHub.
 
 The first FormSubmit message may require confirming the destination email
 address before forwarding starts.

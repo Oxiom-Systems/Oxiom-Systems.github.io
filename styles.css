@@ -1354,6 +1354,14 @@ pre {
   font-weight: 700;
 }
 
+.contact-form .checkbox-label {
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: 11px;
+  font-weight: 600;
+  line-height: 1.42;
+}
+
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -1365,6 +1373,13 @@ pre {
   background: rgba(255, 255, 255, 0.88);
   color: var(--ink);
   font: inherit;
+}
+
+.contact-form input[type="checkbox"] {
+  width: 18px;
+  min-height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--tide);
 }
 
 .contact-form textarea {
@@ -1386,6 +1401,17 @@ pre {
 
 .form-honey {
   display: none;
+}
+
+.form-note {
+  margin: -2px 0 0;
+  color: #527077;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.workshop-signup-form {
+  align-self: stretch;
 }
 
 .thanks-hero {
