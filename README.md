@@ -62,6 +62,11 @@ After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
 - A workshop notification signup form that collects name, email, phone,
   location, and explicit email consent through the activated FormSubmit
   endpoint.
+- A PayPal hosted-button course purchase section for the TraceWeaver online
+  course pack, using hosted button id `MPAC5EDWHU7LE`. The PayPal confirmation
+  return URL should be `https://oxiomsystems.com/traceweaver-course-access.html`.
+- A noindex course access page containing the three YouTube course links and
+  the Google Drive PDF folder link.
 - Workshop positioning for collaborative coding-agent workflows.
 - Agentic harnesses for practical AI orchestration.
 - Solution architecture for real-world AI implementation.
@@ -69,6 +74,9 @@ After DNS resolves, enable **Enforce HTTPS** in the GitHub Pages settings.
   with provider reCAPTCHA left enabled and a honeypot field included.
 - Workshop signup forwarding via the same FormSubmit endpoint; signup records
   should be kept in a private contact system rather than committed to GitHub.
+- The Pages publish script excludes `workshops/`; course PDFs/videos should be
+  distributed through the configured access page and Google Drive folder, not
+  committed into the public Pages release.
 
 The first FormSubmit message may require confirming the destination email
 address before forwarding starts.

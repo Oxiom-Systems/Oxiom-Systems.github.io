@@ -3,7 +3,7 @@ const demos = {
     kicker: "Fast agent pass",
     title: "Prompt-only build",
     summary:
-      "A direct coding-agent build can move quickly, but assumptions, acceptance decisions, and unsupported release claims become difficult to audit.",
+      "A direct coding-agent build can move quickly, but assumptions, acceptance decisions, and delivery claims become difficult to review later.",
     metrics: ["Prompt", "Manual", "Exploration"],
     prompt: `Build the requested feature with tests.
 Use your judgement where the brief is unclear.
@@ -20,46 +20,46 @@ Ship the smallest working version.`,
     kicker: "TraceWeaver pass",
     title: "Controlled agent work",
     summary:
-      "The same work moves through intent capture, approved authority, bounded task capsules, traceability checks, and verification or validation evidence.",
-    metrics: ["Intent Contract", "Bound trace", "Defensible delivery"],
-    prompt: `Stakeholder intent:
+      "The same work moves through a clear goal, approved scope, task boundaries, trace checks, and test or review evidence.",
+    metrics: ["Approved scope", "Trace record", "Delivery proof"],
+    prompt: `Stakeholder goal:
 Deliver the feature without losing the reason it exists.
 
-Approved authority:
+Approved scope:
 REQ-001 The behavior must map to the accepted need.
-REQ-002 Implementation claims require verification evidence.
-REQ-003 Unclear decisions must be held or returned to a human.
+REQ-002 Delivery claims require test evidence.
+REQ-003 Unclear decisions must return to a human or be marked pending.
 
-Validation question:
+Review question:
 Can a reviewer trace the delivered behavior back to the original need?`,
     code: `const traceRecord = {
   behavior: "Feature path added by the agent",
-  authorizedBy: ["REQ-001", "REQ-002"],
+  approvedBy: ["REQ-001", "REQ-002"],
   verification: "focused-test-output",
-  validation: "stakeholder-need-still-satisfied",
-  heldClaims: ["production readiness"]
+  review: "stakeholder-need-still-satisfied",
+  pendingClaims: ["production readiness"]
 };
 
-assertAuthority(traceRecord);
-publishOnlyAfterReview(traceRecord);`,
-    hud: ["Intent", "Trace: REQ-001", "Evidence required"],
-    status: "Bound trace",
+assertReviewTrail(traceRecord);
+releaseOnlyAfterReview(traceRecord);`,
+    hud: ["Goal", "Trace: REQ-001", "Proof needed"],
+    status: "Trace record",
     tiles: ["player", "path", "reveal", "path", "block", "monster", "path", "goal"]
   },
   antigravity: {
     kicker: "Antigravity SDK pass",
     title: "Multi-Agent Verification",
     summary:
-      "Build robust, autonomous agent loops using the Google Antigravity Python SDK. Multi-agent delegation automatically checks requirements, enforces safety predicates, and writes validation logs.",
-    metrics: ["Antigravity SDK", "Safety Predicates", "Multi-Agent Verifiable"],
+      "Build multi-agent workflows using the Google Antigravity Python SDK. Agent delegation checks requirements, applies safety rules, and writes review logs.",
+    metrics: ["Antigravity SDK", "Safety checks", "Multi-agent review"],
     prompt: `from google.antigravity import LocalAgentConfig, Agent
 
 config = LocalAgentConfig(
     model="gemini-2.5-pro",
-    system_instruction="Enforce TraceWeaver systems engineering rules."
+    system_instruction="Follow TraceWeaver review rules."
 )
 agent = Agent(config)
-# Run workflow under intent and requirements audit`,
+# Run workflow with requirements checks`,
     code: `const traceSession = await antigravity.run({
   intent: "Integrate billing processor",
   requirements: "requirements.md",
@@ -67,9 +67,9 @@ agent = Agent(config)
   gates: ["tw-authority-gate", "tw-traceability-check"]
 });
 
-// Agent validates requirements and reports status`,
-    hud: ["Antigravity", "Multi-Agent", "Audited validation"],
-    status: "Audited workflow",
+// Agent checks requirements and reports status`,
+    hud: ["Antigravity", "Multi-agent", "Reviewed workflow"],
+    status: "Reviewed workflow",
     tiles: ["player", "reveal", "path", "goal", "reveal", "path", "path", "goal"]
   }
 };
@@ -125,13 +125,13 @@ const onboards = {
 codex plugin marketplace add Oxiom-Systems/traceweaver
 codex plugin install traceweaver-core@traceweaver
 
-# Bootstrap authority for your project
-tw-auto "bootstrap TraceWeaver authority for this project"`,
+# Start TraceWeaver for your project
+tw-auto "bootstrap TraceWeaver for this project"`,
     tree: `my-project/
-├── requirements.md               [NEW]  <- Controlled requirements baseline
-├── traceability-matrix.md        [NEW]  <- Maps code and verification paths
+├── requirements.md               [NEW]  <- Requirements baseline
+├── traceability-matrix.md        [NEW]  <- Links code and verification paths
 └── .traceweaver/
-    └── intent-contract.yml       [NEW]  <- Approved baseline hash and active gates`,
+    └── intent-contract.yml       [NEW]  <- Baseline hash and active checks`,
     docsUrl: "https://github.com/Oxiom-Systems/traceweaver#codex",
     docsText: "Read the Codex guide"
   },
@@ -149,7 +149,7 @@ tw-auto "implement user auth with verification"`,
 ├── requirements.md               [NEW]  <- Requirements baseline
 ├── traceability-matrix.md        [NEW]  <- Matrix linking needs and code
 └── .traceweaver/
-    └── intent-contract.yml       [NEW]  <- Scope restrictions & baseline hash`,
+    └── intent-contract.yml       [NEW]  <- Scope and baseline hash`,
     docsUrl: "https://github.com/Oxiom-Systems/traceweaver#claude",
     docsText: "Read the Claude Code guide"
   },
@@ -161,8 +161,8 @@ cp plugins/traceweaver-core/.cursor-plugin/plugin.json .cursor-rules/
 # Bootstrap TraceWeaver rules for Cursor
 tw-auto "bootstrap TraceWeaver rules"`,
     tree: `my-project/
-├── requirements.md               [NEW]  <- Controlled requirements baseline
-├── traceability-matrix.md        [NEW]  <- Maps code and verification paths
+├── requirements.md               [NEW]  <- Requirements baseline
+├── traceability-matrix.md        [NEW]  <- Links code and verification paths
 └── .cursor-rules/
     └── plugin.json               [NEW]  <- Cursor rules peer manifest`,
     docsUrl: "https://github.com/Oxiom-Systems/traceweaver#cursor",
@@ -182,7 +182,7 @@ tw-audit "verify requirements coverage"`,
 ├── requirements.md               [NEW]  <- Requirements baseline
 ├── traceability-matrix.md        [NEW]  <- Traceability matrix
 ├── .traceweaver/
-│   └── intent-contract.yml       [NEW]  <- Intent contract details
+│   └── intent-contract.yml       [NEW]  <- Project intent details
 └── main.py                       [NEW]  <- Python agent script using Antigravity SDK`,
     docsUrl: "https://github.com/Oxiom-Systems/traceweaver#antigravity",
     docsText: "Read the Antigravity guide"
