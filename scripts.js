@@ -226,6 +226,8 @@ document.addEventListener("click", async (event) => {
     source = document.getElementById("sample-code");
   } else if (copyButton.dataset.copy === "onboard-cmd") {
     source = document.getElementById("onboard-code");
+  } else if (copyButton.dataset.copy === "orchestra-install") {
+    source = document.getElementById("orchestra-install-code");
   }
 
   if (!source) return;

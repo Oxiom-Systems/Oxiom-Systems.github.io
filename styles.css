@@ -2093,6 +2093,144 @@ pre {
   }
 }
 
+/* Orchestra product and installation guide */
+.orchestra-section {
+  background:
+    radial-gradient(circle at 6% 80%, rgba(23, 185, 202, 0.12), transparent 32rem),
+    linear-gradient(135deg, #f5fdff, #ffffff);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+
+.orchestra-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.orchestra-workflow {
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.orchestra-workflow > .eyebrow {
+  margin: 0 0 24px;
+}
+
+.orchestra-steps {
+  display: grid;
+  gap: 26px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.orchestra-steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.orchestra-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 48px;
+  bottom: -22px;
+  left: 21px;
+  width: 2px;
+  background: linear-gradient(var(--tide), var(--aether));
+  opacity: 0.35;
+}
+
+.orchestra-step-number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(23, 185, 202, 0.28);
+  border-radius: 50%;
+  background: var(--veil);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.orchestra-steps h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+
+.orchestra-steps p,
+.orchestra-setup > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.orchestra-setup {
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.orchestra-setup > h3 {
+  margin: 0 0 14px;
+  color: var(--ink-strong);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+.orchestra-install {
+  margin: 24px 0;
+}
+
+.orchestra-install pre {
+  min-height: 0;
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre;
+}
+
+.orchestra-invoke code {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink-strong);
+}
+
+.orchestra-setup .guide-actions {
+  margin: 24px 0 18px;
+}
+
+.orchestra-setup > .orchestra-license {
+  font-size: 14px;
+}
+
+@media (max-width: 940px) {
+  .orchestra-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .orchestra-section {
+    scroll-margin-top: 190px;
+  }
+
+  .orchestra-section .section-heading h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+}
+
 .video-page {
   min-height: 100vh;
 }

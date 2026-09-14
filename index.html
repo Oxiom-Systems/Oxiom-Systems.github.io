@@ -9,7 +9,7 @@
     >
     <title>Oxiom Systems | AI workflow design and TraceWeaver adoption</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260526-proof-row">
+    <link rel="stylesheet" href="styles.css?v=20260914-orchestra">
     <script
       src="https://www.paypal.com/sdk/js?client-id=BAAsCv71kYgdVHYgZp7JRyYG48yVrtHTEfNrsn2nihOAHM_vf_EaD_OSOdPW2dLJKgAC1k29VnBjT9yQEk&components=hosted-buttons&disable-funding=venmo&currency=USD">
     </script>
@@ -35,6 +35,7 @@
         <a href="#practice">Practice</a>
         <a href="#consultant">Consultant</a>
         <a href="#traceweaver">TraceWeaver</a>
+        <a href="#orchestra">Orchestra</a>
         <a href="#videos">Videos</a>
         <a href="#course">Course</a>
         <a href="#workshops">Workshops</a>
@@ -389,6 +390,74 @@ tw-auto "bootstrap TraceWeaver for this project"</code></pre>
         </div>
       </section>
 
+      <section class="orchestra-section" id="orchestra" aria-labelledby="orchestra-title">
+        <div class="section-heading">
+          <p class="eyebrow">Orchestra · Open source · Claude Code skill</p>
+          <h2 id="orchestra-title">Many agents. One accountable architect.</h2>
+          <p>
+            Orchestra helps Claude Code coordinate multi-agent implementation.
+            The orchestrator plans the work, briefs agents, checks results in
+            the real environment, and integrates their contributions. Subagents
+            implement, with clear ownership and shared context.
+          </p>
+        </div>
+
+        <div class="orchestra-grid">
+          <div class="orchestra-workflow">
+            <p class="eyebrow">How Orchestra works</p>
+            <ol class="orchestra-steps">
+              <li>
+                <span class="orchestra-step-number" aria-hidden="true">01</span>
+                <div>
+                  <h3>Plan the work</h3>
+                  <p>Decide where delegation helps and put the decisions in order.</p>
+                </div>
+              </li>
+              <li>
+                <span class="orchestra-step-number" aria-hidden="true">02</span>
+                <div>
+                  <h3>Brief each agent</h3>
+                  <p>Define the task, context, constraints, and files each agent owns.</p>
+                </div>
+              </li>
+              <li>
+                <span class="orchestra-step-number" aria-hidden="true">03</span>
+                <div>
+                  <h3>Verify the result</h3>
+                  <p>Check the actual artifacts and behavior before accepting a report.</p>
+                </div>
+              </li>
+              <li>
+                <span class="orchestra-step-number" aria-hidden="true">04</span>
+                <div>
+                  <h3>Integrate the work</h3>
+                  <p>Reconcile contributions, resolve shared files, and review the whole.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="orchestra-setup">
+            <h3>Start with Orchestra.</h3>
+            <p>Install the plugin from your terminal, then invoke it in a Claude Code session.</p>
+            <div class="pane orchestra-install">
+              <div class="pane-header">
+                <span>Terminal setup</span>
+                <button class="icon-button" type="button" data-copy="orchestra-install" aria-label="Copy Orchestra installation commands">Copy</button>
+              </div>
+              <pre tabindex="0" aria-label="Orchestra installation commands"><code id="orchestra-install-code">claude plugin marketplace add Oxiom-Systems/orchestra
+claude plugin install orchestra@orchestra</code></pre>
+            </div>
+            <p class="orchestra-invoke">In your session, run <code>/orchestra</code></p>
+            <div class="guide-actions" aria-label="Orchestra resources">
+              <a class="button primary" href="https://github.com/Oxiom-Systems/orchestra" target="_blank" rel="noopener">Explore Orchestra on GitHub</a>
+              <a class="button secondary" href="https://github.com/Oxiom-Systems/orchestra#what-it-covers" target="_blank" rel="noopener">Read the workflow guide</a>
+            </div>
+            <p class="orchestra-license">MIT licensed. Free to use and adapt.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="video-library" id="videos" aria-labelledby="videos-title">
         <div class="section-heading">
           <p class="eyebrow">Video guides</p>
@@ -700,6 +769,6 @@ tw-auto "bootstrap TraceWeaver for this project"</code></pre>
       <span>TraceWeaver adoption, workshops, AI workflow systems, and solution architecture.</span>
     </footer>
 
-    <script src="scripts.js?v=20260607-copy"></script>
+    <script src="scripts.js?v=20260914-orchestra"></script>
   </body>
 </html>
