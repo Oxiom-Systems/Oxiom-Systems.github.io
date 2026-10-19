@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       with:
         repository: Oxiom-Systems/Oxiom-Systems.github.io
-        ref: a49960595d39a98ebbd6864ab7c27e977b7a9157
+        ref: 2b1bff0f807b280d4ecd3821235cb2c3b73eb718
         path: publisher-code
         persist-credentials: false
         sparse-checkout-cone-mode: false
