@@ -1,0 +1,33 @@
+name: Deploy Oxiom static site to GitHub Pages
+'on':
+  push:
+    branches:
+    - dev
+    - main
+  pull_request:
+    branches:
+    - dev
+    - main
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-build-recipe.yml@e992544bfd18741af023ce5989fb879efabf0881
+    permissions:
+      contents: read
+  publish:
+    needs: build
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      && github.ref == 'refs/heads/main' && github.ref_protected == true
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@839d087216857b75d8cf51f148451384ab331835
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    with:
+      artifact_id: ${{ needs.build.outputs.artifact_id }}
