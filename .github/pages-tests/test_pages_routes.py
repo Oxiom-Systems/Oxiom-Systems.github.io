@@ -1,5 +1,6 @@
 """Verify the real workflow boundaries, immutable helper snapshot, and fixed policy."""
 from pathlib import Path
+import hashlib
 import re
 import unittest
 import yaml
@@ -29,7 +30,10 @@ class PagesRouteTest(unittest.TestCase):
         self.assertIn('github.ref_protected == true',job['if'])
         self.assertNotIn('inputs.producer',path.read_text())
         checkout=next(s for s in job['steps'] if s.get('uses','').startswith('actions/checkout@'))
-        self.assertRegex(checkout['with']['ref'],r'^[0-9a-f]{40}$')
+        self.assertEqual(checkout['with']['repository'],'Oxiom-Systems/Oxiom-Systems.github.io')
+        self.assertEqual(checkout['with']['ref'],'2b1bff0f807b280d4ecd3821235cb2c3b73eb718')
+        self.assertEqual(hashlib.sha256((ROOT/'.github/pages/verify_artifact.py').read_bytes()).hexdigest(),
+                         '6d8d5a6344d0eac761c61883ff95230752e69d6ef3ff0ebc60a726e2bc996e82')
         self.assertIs(checkout['with']['persist-credentials'],False)
         self.assertEqual(checkout['with']['sparse-checkout'],'/.github/pages/')
         runs='\n'.join(s.get('run','') for s in job['steps'])
@@ -52,6 +56,8 @@ class PagesRouteTest(unittest.TestCase):
         data=yaml.safe_load((ROOT/'.github/workflows/pages.yml').read_text())
         self.assertEqual(data['permissions'],{'contents':'read'})
         build=data['jobs']['build'];publish=data['jobs']['publish']
+        self.assertEqual(publish['uses'],
+                         'Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@92d55bdc6a6efeb4e26e327178cac9dfc9101e1b')
         self.assertEqual(publish['needs'],'build')
         self.assertEqual(publish['with'],{'artifact_id':'${{ needs.build.outputs.artifact_id }}'})
         self.assertIn("github.ref == 'refs/heads/main'",publish['if'])
