@@ -1,0 +1,220 @@
+{
+  "repository": {
+    "id": 1133295682,
+    "full_name": "cryptolabsza/dc-overview",
+    "private": false
+  },
+  "run": {
+    "id": 39197382478,
+    "run_attempt": 1,
+    "repository": {
+      "id": 1133295682,
+      "full_name": "cryptolabsza/dc-overview"
+    },
+    "head_repository": {
+      "id": 1133295682,
+      "full_name": "cryptolabsza/dc-overview"
+    },
+    "head_branch": "dev",
+    "head_sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4",
+    "event": "push",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/cryptolabsza/dc-overview/pulls/18",
+        "id": 4914872810,
+        "number": 18,
+        "head": {
+          "ref": "dev",
+          "sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4",
+          "repo": {
+            "id": 1133295682,
+            "url": "https://api.github.com/repos/cryptolabsza/dc-overview",
+            "name": "dc-overview"
+          }
+        },
+        "base": {
+          "ref": "main",
+          "sha": "6f5ceae328241a3e73c76d811f4c5ae2644561d0",
+          "repo": {
+            "id": 1133295682,
+            "url": "https://api.github.com/repos/cryptolabsza/dc-overview",
+            "name": "dc-overview"
+          }
+        }
+      }
+    ],
+    "path": ".github/workflows/docker-build.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "referenced_workflows": [
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-publish-recipe.yml@48154ab06d70b953663c34ec4842a70b1285fa94",
+        "sha": "48154ab06d70b953663c34ec4842a70b1285fa94"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-build-recipe.yml@c6757ad493d514f076c913b50b08355609ea28fd",
+        "sha": "c6757ad493d514f076c913b50b08355609ea28fd"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-preflight-recipe.yml@8ff3429c6687b0d381cb3e961de30563cccb43e6",
+        "sha": "8ff3429c6687b0d381cb3e961de30563cccb43e6"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-readback-recipe.yml@8ff3429c6687b0d381cb3e961de30563cccb43e6",
+        "sha": "8ff3429c6687b0d381cb3e961de30563cccb43e6"
+      }
+    ]
+  },
+  "attempt": {
+    "id": 39197382478,
+    "run_attempt": 1,
+    "repository": {
+      "id": 1133295682,
+      "full_name": "cryptolabsza/dc-overview"
+    },
+    "head_repository": {
+      "id": 1133295682,
+      "full_name": "cryptolabsza/dc-overview"
+    },
+    "head_branch": "dev",
+    "head_sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4",
+    "event": "push",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/cryptolabsza/dc-overview/pulls/18",
+        "id": 4914872810,
+        "number": 18,
+        "head": {
+          "ref": "dev",
+          "sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4",
+          "repo": {
+            "id": 1133295682,
+            "url": "https://api.github.com/repos/cryptolabsza/dc-overview",
+            "name": "dc-overview"
+          }
+        },
+        "base": {
+          "ref": "main",
+          "sha": "6f5ceae328241a3e73c76d811f4c5ae2644561d0",
+          "repo": {
+            "id": 1133295682,
+            "url": "https://api.github.com/repos/cryptolabsza/dc-overview",
+            "name": "dc-overview"
+          }
+        }
+      }
+    ],
+    "path": ".github/workflows/docker-build.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "referenced_workflows": [
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-publish-recipe.yml@48154ab06d70b953663c34ec4842a70b1285fa94",
+        "sha": "48154ab06d70b953663c34ec4842a70b1285fa94"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-build-recipe.yml@c6757ad493d514f076c913b50b08355609ea28fd",
+        "sha": "c6757ad493d514f076c913b50b08355609ea28fd"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-preflight-recipe.yml@8ff3429c6687b0d381cb3e961de30563cccb43e6",
+        "sha": "8ff3429c6687b0d381cb3e961de30563cccb43e6"
+      },
+      {
+        "path": "cryptolabsza/dc-overview/.github/workflows/ci-image-readback-recipe.yml@8ff3429c6687b0d381cb3e961de30563cccb43e6",
+        "sha": "8ff3429c6687b0d381cb3e961de30563cccb43e6"
+      }
+    ]
+  },
+  "jobs": {
+    "total_count": 1,
+    "jobs": [
+      {
+        "id": 117882964739,
+        "run_id": 39197382478,
+        "run_attempt": 1,
+        "head_sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "build / build",
+        "runner_id": 649,
+        "runner_group_id": 11,
+        "runner_group_name": "ci-build-public-ephemeral",
+        "labels": [
+          "ci-linux-cpu-v1-r1133295682"
+        ],
+        "started_at": "2026-10-19T04:25:24Z",
+        "completed_at": "2026-10-19T04:35:42Z"
+      }
+    ]
+  },
+  "artifact": {
+    "id": 12163865474,
+    "name": "cpu-image-39197382478-1",
+    "size_in_bytes": 1243,
+    "expired": false,
+    "digest": "sha256:71925f25bbcdce00bdab134e6eb29fceede873385f7da73cfe3aa5df9b9fc38b",
+    "created_at": "2026-10-19T04:35:31Z",
+    "expires_at": "2026-10-26T04:35:29Z",
+    "workflow_run": {
+      "id": 39197382478,
+      "repository_id": 1133295682,
+      "head_repository_id": 1133295682,
+      "head_branch": "dev",
+      "head_sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4"
+    }
+  },
+  "artifacts": {
+    "total_count": 1,
+    "artifacts": [
+      {
+        "id": 12163865474,
+        "name": "cpu-image-39197382478-1",
+        "size_in_bytes": 1243,
+        "expired": false,
+        "digest": "sha256:71925f25bbcdce00bdab134e6eb29fceede873385f7da73cfe3aa5df9b9fc38b",
+        "created_at": "2026-10-19T04:35:31Z",
+        "expires_at": "2026-10-26T04:35:29Z",
+        "workflow_run": {
+          "id": 39197382478,
+          "repository_id": 1133295682,
+          "head_repository_id": 1133295682,
+          "head_branch": "dev",
+          "head_sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4"
+        }
+      }
+    ]
+  },
+  "branch": {
+    "name": "dev",
+    "protected": true,
+    "commit": {
+      "sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4"
+    }
+  },
+  "compare": {
+    "status": "identical",
+    "base_commit": {
+      "sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4"
+    },
+    "merge_base_commit": {
+      "sha": "b774bc3fa82186e6b1be8b8c020a62206f6054d4"
+    }
+  },
+  "provenance": {
+    "source": "Public cryptolabsza/dc-overview run39197382478 attempt1, successful build job117882964739; snapshot0520 plus read-only metadata GETs2026-10-19. No artifact payload downloaded.",
+    "projection": "Only verifier-consumed metadata fields retained. Values, primary push event/completed-success status and both whole pull_requests arrays are unchanged. Successful build job projected; unrelated publisher/deploy jobs omitted. Dispatch positive adapts event only.",
+    "snapshot": "/private/tmp/website-pages-metadata-20261019/public-api/manifest.json",
+    "raw_sha256": {
+      "artifact.json": "aef1f724a5c442ce1aa43f59a353b931e5688ef7365cfa3e72c948edd596f107",
+      "artifacts.json": "493760ed9a9cf646e69fff395aa43ee0c8a76976402779263afe9fbc35c895a7",
+      "attempt.json": "497c62c00dd34ca7376abed62c8c500a89b2504d8ff2cb38b0fdb88acbb0b68c",
+      "branch.json": "fe96dbfff5d85e9469e31b97fe56eb9c8dc50094ef73faabb8cfe31c5429d6d6",
+      "compare.json": "50ee26a2cd76a9e05c3803c81cf8bc9af3b6ba76e67f4e06f6e61f21338975dc",
+      "jobs.json": "5a60711900e9181cf8c0f61a1d73c3976237d62c302627db463c1dcfca5f2546",
+      "manifest.json": "a7bdf0d491c8a7d69a368919c5b6611ba241984e24ea2c2055df79e5aae195a5",
+      "repository.json": "0dfb3aaf74537246aec80883b38e981a221b7adbbf2dad4c8987b5bb3caa009b",
+      "run.json": "0b7975f664ef271a80a29b74964ccc1ba3af04761c06e4a7d0273dbc27e3957f"
+    }
+  }
+}

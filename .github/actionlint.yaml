@@ -1,0 +1,4 @@
+self-hosted-runner:
+  labels:
+    - ci-linux-cpu-v1-r1227131259
+    - ci-linux-publish-v1-r1227131259
