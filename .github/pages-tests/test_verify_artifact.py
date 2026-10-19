@@ -35,7 +35,7 @@ def archive(entries=(('index.html',b'hello'),)):
 
 class Scenario:
  def __init__(self):
-  self.run=copy.deepcopy(FIXTURE['run']);self.run.update(event='push',head_branch='dev',pull_requests=[])
+  self.run=copy.deepcopy(FIXTURE['run']);self.run.update(event='push',head_branch='dev')
   self.job=copy.deepcopy(FIXTURE['job'])
   self.artifact=copy.deepcopy(FIXTURE['artifact']);self.artifact.update(name=f'site-{RUN}-1',created_at='2026-10-16T11:58:00Z',expires_at='2026-10-17T00:00:00Z')
   self.artifact['workflow_run'].update(id=RUN,repository_id=POLICY.repository_id,head_repository_id=POLICY.repository_id,head_branch='dev',head_sha=SHA)
@@ -97,6 +97,72 @@ class ProducerIdentity(unittest.TestCase):
    with self.subTest(key=key):
     fields=dict(POLICY.__dict__);fields[key]=value
     with self.assertRaises(v.Refused):v.Policy(**fields)
+
+class ProtectedPushAssociation(unittest.TestCase):
+ """Replay actual protected push metadata without discarding its PR association."""
+ fixture=json.loads((Path(__file__).parent/'fixtures/public-dc-push-pr-association.json').read_text())
+ policy=v.Policy(repository='cryptolabsza/dc-overview',repository_id=1133295682,
+  workflow_path='.github/workflows/docker-build.yml',
+  recipe_ref='cryptolabsza/dc-overview/.github/workflows/ci-image-build-recipe.yml@c6757ad493d514f076c913b50b08355609ea28fd',
+  producer_job='build / build',group_id=11,build_label='ci-linux-cpu-v1-r1133295682',
+  artifact_kind='oci',artifact_stem='cpu-image')
+ def scenario(self,event='push'):
+  data=copy.deepcopy(self.fixture)
+  # Primary push data is unchanged; dispatch explicitly adapts only the event.
+  for key in ('run','attempt'):data[key]['event']=event
+  return data
+ def check(self,data):
+  run=data['run'];artifact=data['artifact'];base='/repos/'+self.policy.repository
+  runpath=base+'/actions/runs/'+str(run['id'])
+  table={base:data['repository'],runpath:data['run'],runpath+'/attempts/1':data['attempt'],
+   base+'/branches/dev':data['branch'],
+   base+'/compare/'+run['head_sha']+'...'+data['branch']['commit']['sha']:data['compare'],
+   runpath+'/attempts/1/jobs?per_page=100&page=1':data['jobs'],
+   base+'/actions/artifacts/'+str(artifact['id']):artifact,
+   runpath+'/artifacts?per_page=100&page=1':data['artifacts']}
+  return v.verify_metadata(lambda path:copy.deepcopy(table[path]),self.policy,run['id'],1,artifact['id'],now='2026-10-19T05:20:00Z')
+ def test_allowed_protected_events_preserve_actual_associated_pr(self):
+  for event in ('push','workflow_dispatch'):
+   with self.subTest(event=event):
+    data=self.scenario(event)
+    self.assertIs(data['repository']['private'],False)
+    self.assertEqual(data['run']['pull_requests'][0]['number'],18)
+    if event=='push':self.assertEqual(data,self.fixture)
+    proof=self.check(data)
+    self.assertEqual(proof['head_sha'],self.fixture['run']['head_sha'])
+    self.assertEqual(proof['artifact_id'],self.fixture['artifact']['id'])
+    self.assertEqual(proof['event'],event)
+    for key in ('run','attempt'):
+     self.assertEqual(data[key]['pull_requests'],self.fixture[key]['pull_requests'])
+ def test_pr_events_remain_denied_with_real_association(self):
+  for event in ('pull_request','pull_request_target'):
+   with self.subTest(event=event),self.assertRaisesRegex(v.Refused,'protected source event'):
+    self.check(self.scenario(event))
+ def test_association_requires_list_shape_in_latest_and_attempt(self):
+  for key in ('run','attempt'):
+   for value in (None,{},'[]'):
+    with self.subTest(key=key,value=value):
+     data=self.scenario();data[key]['pull_requests']=value
+     with self.assertRaisesRegex(v.Refused,'protected source event'):self.check(data)
+ def test_association_does_not_replace_independent_identity_proofs(self):
+  for case in ('repository','branch','sha','workflow','recipe','producer','runner','artifact'):
+   with self.subTest(case=case):
+    data=self.scenario()
+    if case=='repository':data['repository']['id']=1
+    elif case=='branch':data['branch']['protected']=False
+    elif case=='sha':data['attempt']['head_sha']='b'*40
+    elif case=='workflow':data['run']['path']='.github/workflows/other.yml'
+    elif case=='recipe':next(ref for ref in data['run']['referenced_workflows'] if ref['path']==self.policy.recipe_ref)['sha']='b'*40
+    elif case=='producer':data['jobs']['jobs'][0]['conclusion']='failure'
+    elif case=='runner':data['jobs']['jobs'][0]['runner_group_id']=12
+    else:data['artifact']['workflow_run']['head_sha']='b'*40
+    with self.assertRaises(v.Refused):self.check(data)
+ def test_failed_terminal_and_queued_states_remain_denied(self):
+  for status,conclusion in (('completed','failure'),('queued',None)):
+   data=self.scenario()
+   for key in ('run','attempt'):data[key].update(status=status,conclusion=conclusion)
+   with self.subTest(status=status),self.assertRaisesRegex(v.Refused,'producer run state'):
+    self.check(data)
 
 class ArchiveSafety(unittest.TestCase):
  def unpack(self,data):

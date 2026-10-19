@@ -23,7 +23,7 @@ jobs:
     needs: build
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       && github.ref == 'refs/heads/main' && github.ref_protected == true
-    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@839d087216857b75d8cf51f148451384ab331835
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@92d55bdc6a6efeb4e26e327178cac9dfc9101e1b
     permissions:
       contents: read
       actions: read
