@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import re
+import subprocess
 import unittest
 import yaml
 ROOT=Path(__file__).resolve().parents[2]
@@ -13,7 +14,7 @@ class PagesRouteTest(unittest.TestCase):
         self.assertEqual(recipe['permissions'], {'contents':'read'})
         self.assertEqual(job['permissions'], {'contents':'read'})
         self.assertEqual(job['runs-on']['group'], 'ci-build-public-ephemeral')
-        self.assertEqual(job['timeout-minutes'],45)
+        self.assertEqual(job['timeout-minutes'],120)
         upload=next(s for s in job['steps'] if s.get('id')=='upload')
         self.assertEqual(upload['with']['name'],'pages-site-${{ github.run_id }}-${{ github.run_attempt }}')
         self.assertNotIn('secrets',str(recipe))
@@ -31,7 +32,7 @@ class PagesRouteTest(unittest.TestCase):
         self.assertNotIn('inputs.producer',path.read_text())
         checkout=next(s for s in job['steps'] if s.get('uses','').startswith('actions/checkout@'))
         self.assertEqual(checkout['with']['repository'],'Oxiom-Systems/Oxiom-Systems.github.io')
-        self.assertEqual(checkout['with']['ref'],'2b1bff0f807b280d4ecd3821235cb2c3b73eb718')
+        self.assertEqual(checkout['with']['ref'],'59f3d8dde051004a3514a000095af3ae0357a878')
         self.assertEqual(hashlib.sha256((ROOT/'.github/pages/verify_artifact.py').read_bytes()).hexdigest(),
                          '6d8d5a6344d0eac761c61883ff95230752e69d6ef3ff0ebc60a726e2bc996e82')
         self.assertIs(checkout['with']['persist-credentials'],False)
@@ -48,6 +49,19 @@ class PagesRouteTest(unittest.TestCase):
         self.assertIn("artifact_kind='site'",text)
         self.assertIn("producer_job='build / build'",text)
         self.assertRegex(text,r"recipe_ref='[^']+/ci-pages-build-recipe.yml@[0-9a-f]{40}'")
+        # Resolve actual immutable publisher/helper bytes, not an unexecuted source policy.
+        caller=yaml.safe_load((ROOT/'.github/workflows/pages.yml').read_text())
+        publisher_sha=caller['jobs']['publish']['uses'].rsplit('@',1)[1]
+        publisher=yaml.safe_load(subprocess.check_output(
+            ['git','show',publisher_sha+':.github/workflows/ci-pages-publish-recipe.yml'],
+            cwd=ROOT,text=True))
+        checkout=next(s for s in publisher['jobs']['publish']['steps']
+                      if s.get('uses','').startswith('actions/checkout@'))
+        policy=subprocess.check_output(
+            ['git','show',checkout['with']['ref']+':.github/pages/pages_policy.py'],
+            cwd=ROOT,text=True)
+        self.assertEqual(re.search(r"recipe_ref='([^']+)'",policy)[1],
+                         caller['jobs']['build']['uses'])
         runtime=(ROOT/'.github/pages/pages_runtime.py').read_text()
         self.assertIn("summary['branch'] == 'main'",runtime)
         self.assertIn("{'artifact.tar'}",runtime)
@@ -57,7 +71,7 @@ class PagesRouteTest(unittest.TestCase):
         self.assertEqual(data['permissions'],{'contents':'read'})
         build=data['jobs']['build'];publish=data['jobs']['publish']
         self.assertEqual(publish['uses'],
-                         'Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@92d55bdc6a6efeb4e26e327178cac9dfc9101e1b')
+                         'Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@51fa37da0a535c173b6f5eca32bc7719addeda52')
         self.assertEqual(publish['needs'],'build')
         self.assertEqual(publish['with'],{'artifact_id':'${{ needs.build.outputs.artifact_id }}'})
         self.assertIn("github.ref == 'refs/heads/main'",publish['if'])
