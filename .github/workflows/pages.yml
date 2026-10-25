@@ -16,14 +16,14 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-build-recipe.yml@e992544bfd18741af023ce5989fb879efabf0881
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-build-recipe.yml@d18e342e92ec1f1c8675a145e6ceae4679929e9d
     permissions:
       contents: read
   publish:
     needs: build
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       && github.ref == 'refs/heads/main' && github.ref_protected == true
-    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@92d55bdc6a6efeb4e26e327178cac9dfc9101e1b
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-publish-recipe.yml@51fa37da0a535c173b6f5eca32bc7719addeda52
     permissions:
       contents: read
       actions: read
