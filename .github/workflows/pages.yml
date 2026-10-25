@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-build-recipe.yml@e992544bfd18741af023ce5989fb879efabf0881
+    uses: Oxiom-Systems/Oxiom-Systems.github.io/.github/workflows/ci-pages-build-recipe.yml@d18e342e92ec1f1c8675a145e6ceae4679929e9d
     permissions:
       contents: read
   publish:
